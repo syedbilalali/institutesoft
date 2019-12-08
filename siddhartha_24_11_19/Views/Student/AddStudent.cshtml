@@ -250,7 +250,7 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label >Email Address</label>
                                                     <div class="input-group">
-                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = " Enter Email Address ", @required = "" } })
+                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = " Enter Email Address " } })
                                                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
@@ -261,7 +261,7 @@
                     gender
                     ,
                     "--SELECT Gender--",
-                    new { @class = "form-control" })
+                    new { @class = "form-control" , @required = "" })
                                                         @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
@@ -271,7 +271,7 @@
                                                 <div class="col-md-12 mb-3">
                                                     <label>Address</label>
                                                     <div class="input-group">
-                                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Address. ", @required = "" } })
+                                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Address. " } })
                                                         @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
@@ -279,17 +279,17 @@
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label>Pincode </label>
-                                                    @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Pincode ", @required = "" } })
+                                                    @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Pincode " } })
                                                     @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label >Religion</label>
-                                                    @Html.EditorFor(model => model.Religion, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Religion ", @required = "" } })
+                                                    @Html.EditorFor(model => model.Religion, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Religion " } })
                                                     @Html.ValidationMessageFor(model => model.Religion, "", new { @class = "text-danger" })
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label>Passing Years</label>
-                                                    @Html.EditorFor(model => model.PassingYears, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Passing Years", @required = "" } })
+                                                    @Html.EditorFor(model => model.PassingYears, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Passing Years" } })
                                                     @Html.ValidationMessageFor(model => model.PassingYears, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -329,7 +329,7 @@
                      course
                      ,
                      "--SELECT Course--",
-                     new { @class = "form-control" })
+                     new { @class = "form-control" ,  @required = ""})
 
                                                     @Html.ValidationMessageFor(model => model.Course, "", new { @class = "text-danger" })
                                                 </div>
