@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "StudentList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var index = 1;
+}
+    <div class="row upp2">
+        <!-- Column -->
+        <div class="row rolebtns2">
+            <div class="col-lg-6 col-xlg-6 col-md-6">
+                <form action="#">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="product" placeholder="Type the product.. " aria-label="">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="mdi  mdi-magnify"></i></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 col-xlg-6 col-md-6" style="display:none;">
+                <button type="button" class="btn btn-info btnaddrole" data-toggle="modal" data-target="#addcat" data-whatever="">Add Products </button>
+            </div>
+        </div>
+        <div class="addrolestab">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th> Application No. </th>
+                        <th>Student Name</th>
+                        <th>Father Name</th>
+                        <th>Course </th>
+                        <th>Mobile</th>
+                        <th>Batch Time</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="products">
+                   @if (Model.student.Count > 0)
+                    {
+
+                        foreach (var std in Model.student)
+                        {
+
+                    <tr>
+                        <td> @(index++)</td>
+                        <td>@std.ApplicationNo</td>
+                        <td>
+                            @std.StudentName
+                        </td>
+                        <td>@std.FatherName</td>
+                        <td>@std.Course</td>
+                        <td>@std.ConactNo1</td>
+                        <td>@std.BatchTime</td>
+                        <td>@std.TotalFees</td>
+                        <td>
+                            <button type="button" class="btn btn-info editbtn1" onclick="GetDetails(@std.ApplicationNo)">Edit</button>
+                            <button type="button" class="btn btn-primary deletebtn1" onclick="location.href='@Url.Action("DeleteProducts", "Student", new {  ApplicationNo = std. ApplicationNo })'">Delete</button>
+                        </td>
+                    </tr>
+
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" align="center">
+                                <div class="alert alert-info">
+                                    <i class="ti-info" style="margin-right: 5px;border-radius: 50%;border: 1px solid #249ddc; padding: 3px; font-size: 10px;"></i> No Student Found !!!
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">  </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- Column -->
+    </div>
+@section scripts{
+}
+

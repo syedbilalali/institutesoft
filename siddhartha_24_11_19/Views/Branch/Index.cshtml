@@ -1,0 +1,315 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model siddhartha_24_11_19.Models.Branch
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content("~/assets/images/favicon.png")">
+    <title> Welcome to Branch Registration </title>
+
+    <!-- page css -->
+    <link href="@Url.Content("~/dist/css/pages/login-register-lock.css")" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/assets/node_modules/dropify/dist/css/dropify.min.css")">
+    <!-- Custom CSS -->
+    <link href="@Url.Content("~/dist/css/style.min.css")" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .validation-summary-errors ul, .validation-summary-errors li {
+            list-style: none;
+            display: inline;
+            padding: 0;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="skin-default card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label"> Siddhartha Admin</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <section id="wrapper">
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Branch Registration Forms : </h4>
+                            @using (@Html.BeginForm("Index", "Branch", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation", @novalidate = "" }))
+                            {   
+                               
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom01">Institute Reg No .</label>
+
+                                        @Html.EditorFor(model => model.InstituteRegNo, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Institute No. ", id = "validationCustom01", @required = "" } })
+                                        @Html.ValidationMessageFor(model => model.InstituteRegNo, "", new { @class = "text-control" })
+                                        
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom02">Institute Name </label>
+                                        @Html.EditorFor(model => model.InstittuteName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Institute Name. ", id = "validationCustom02", @required = "" } })
+                                        @Html.ValidationMessageFor(model => model.InstittuteName, "", new { @class = "text-control" })
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustomUsername">Director Name</label>
+                                        @Html.EditorFor(model => model.DirectorName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Director Name.  ", id = "validationCustomUsername", @required = "" } })
+                                        @Html.ValidationMessageFor(model => model.DirectorName, "", new { @class = "text-control" })
+                                        
+
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom04">Accountant Name</label>
+                                        @Html.EditorFor(model => model.AccountantName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Acountant  Name.  ", id = "validationCustom04", @required = "" } })
+                                        @Html.ValidationMessageFor(model => model.AccountantName, "", new { @class = "text-control" })
+
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom03">Website</label>
+                                        @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Website Name.  ", id = "validationCustom03", @required = "" } })
+                                        @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-control" })
+
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom03">Branch Code</label>
+                                        @Html.EditorFor(model => model.BranchCode, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Branch Code", id = "", @required = "" } })
+                                        @Html.ValidationMessageFor(model => model.BranchCode, "", new { @class = "text-control" })
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom04">Mobile Number</label>
+                                        @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Mobile Number. ", id = "validationCustom04", @required = "" } })
+                                        @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-control" })
+
+                                     
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom05">Email Address</label>
+                                        @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Email Address ", id = "validationCustom05", @required = "" } })
+                                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-control" })
+
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-8 mb-3">
+                                        <label for="validationCustom03">Address</label>
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Place Address ", id = "validationCustom03", @required = "" } })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-control" })
+
+                                       
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom05">Password</label>
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = " Enter Password Here ", id = "validationCustom05", @required = "" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-control" })
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 mb-3">
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <input type="file" name="Logo" id="input-file-now-custom-1" class="dropify" data-default-file="../assets/node_modules/dropify/src/images/test-image-1.jpg" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            }
+                            <script>
+                                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                (function () {
+                                    'use strict';
+                                    window.addEventListener('load', function () {
+                                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                        var forms = document.getElementsByClassName('needs-validation');
+                                        // Loop over them and prevent submission
+                                        var validation = Array.prototype.filter.call(forms, function (form) {
+                                            form.addEventListener('submit', function (event) {
+                                                if (form.checkValidity() === false) {
+                                                    event.preventDefault();
+                                                    event.stopPropagation();
+                                                }
+                                                form.classList.add('was-validated');
+                                            }, false);
+                                        });
+                                    }, false);
+                                })();
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Institue List </h4>
+                            <h6 class="card-subtitle">All Institutes related to this website listed here.</h6>
+                            <div class="table-responsive table fixed-table-scroll-inner">
+                                <table class="table tablesaw-overflow">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Institue Name</th>
+                                            <th>Branch Code</th>
+                                            <th>Mobile No. </th>
+                                            <th>Director Name</th>
+                                            <th>Accountant Name</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ViewData["branch"] != null)
+                                        {
+
+                                            foreach (var std in ViewData["branch"] as IList<siddhartha_24_11_19.Models.Branch>)
+                                            {
+                                                <tr>
+                                                    <td>@std.InstittuteName</td>
+                                                    <td>@std.BranchCode</td>
+                                                    <td>@std.MobileNumber</td>
+                                                    <td>@std.DirectorName</td>
+                                                    <td>@std.AccountantName</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-info editbtn1" onclick="GetDetails(@std.Id)">Edit</button>
+                                                        <button type="button" class="btn btn-primary deletebtn1" onclick="location.href='@Url.Action("DeleteBranch", "Branch", new { id = std.Id })'">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td colspan="1"> No Data Found !!! </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="@Url.Content("~/assets/node_modules/jquery/jquery-3.2.1.min.js")"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="@Url.Content("~/assets/node_modules/popper/popper.min.js")"></script>
+    <script src="@Url.Content("~/dist/js/perfect-scrollbar.jquery.min.js")"></script>
+    <script src="@Url.Content("~/assets/node_modules/bootstrap/dist/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js")"></script>
+    <script src="@Url.Content("~/assets/node_modules/sparkline/jquery.sparkline.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-3.3.1.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+    <!--Custom JavaScript -->
+    <script src="@Url.Content("~/dist/js/custom.min.js")"></script>
+    <!--Custom JavaScript -->
+    <script type="text/javascript">
+        $(function () {
+            $(".preloader").fadeOut();
+        });
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+        // ==============================================================
+        // Login and Recover Password
+        // ==============================================================
+        $('#to-recover').on("click", function () {
+            $("#loginform").slideUp();
+            $("#recoverform").fadeIn();
+        });
+    </script>
+    <script src="@Url.Content("~/assets/node_modules/dropify/dist/js/dropify.min.js")"></script>
+    <script>
+        $(document).ready(function () {
+            // Basic
+            $('.dropify').dropify();
+
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: 'Glissez-déposez un fichier ici ou cliquez',
+                    replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                    remove: 'Supprimer',
+                    error: 'Désolé, le fichier trop volumineux'
+                }
+            });
+
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+
+            drEvent.on('dropify.beforeClear', function (event, element) {
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+
+            drEvent.on('dropify.afterClear', function (event, element) {
+                alert('File deleted');
+            });
+
+            drEvent.on('dropify.errors', function (event, element) {
+                console.log('Has Errors');
+            });
+
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function (e) {
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+    </script>
+
+</body>
+
+</html>
+

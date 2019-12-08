@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model siddhartha_24_11_19.Models.Course
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="text-themecolor">Course</h4>
+    </div>
+    <div class="col-md-7 align-self-center text-right">
+        <div class="d-flex justify-content-end align-items-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Course</li>
+            </ol>
+            <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i>Add Course</button>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Course</h4>
+                <h6 class="card-subtitle"> Add avaiable course for student. </h6>
+                @using (Html.BeginForm("addCourses", "Course", FormMethod.Post, new { @class = "mt-4" }))
+                {
+
+                    <div class="form-group">
+                        <label class="text-black-50">Course Name(<span class="text-danger">Max 50 char</span>)</label>
+                        @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control", @placeholder = " Enter Course Name " , @maxlength="50" } })
+                        @Html.ValidationMessageFor(model => model.CourseName , "" , new {  @class="text-danger"})
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Course</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Course List</h4>
+                <h6 class="card-subtitle">This is our course list for providing to students</h6>
+                <div class="table-responsive">
+                    <table class="table full-color-table full-purple-table hover-table">
+                        @if (ViewData["course"] != null)
+                        {
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Course Name</th>
+                                    <th>Created At</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var cour in ViewData["course"] as List
+                                <siddhartha_24_11_19.Models.Course>
+                                    )
+                                {
+                                    <tr>
+                                        <td>1</td>
+                                        <td>@cour.CourseName</td>
+                                        <td>@cour.CreatedAt</td>
+                                        <td>   <button type="button" class="btn btn-primary deletebtn1" onclick="location.href='@Url.Action("DeleteCourse", "Course", new { id = cour.Id })'">Delete</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        }
+                        else
+                        {
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" style=" text-align:center;"> No Course Added !!! </td>
+                                </tr>
+                            </tbody>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+}
+

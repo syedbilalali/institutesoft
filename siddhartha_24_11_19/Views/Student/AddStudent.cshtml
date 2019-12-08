@@ -1,0 +1,468 @@
+﻿@model siddhartha_24_11_19.Models.Student
+@{
+    /**/
+
+    ViewBag.Title = " :: Welcome to Student Registration Form :: ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listItems = new List<SelectListItem> {
+        new SelectListItem { Text = "Government Employee", Value = "Government Employee" },
+        new SelectListItem { Text = "Government Undertaking", Value = "Government Undertaking" },
+         new SelectListItem { Text = "Self Employed", Value = "Self Employed" },
+          new SelectListItem { Text = "Others", Value = "Others" }
+    };
+    var category = new List<SelectListItem> {
+        new SelectListItem { Text = "General", Value = "General" },
+        new SelectListItem { Text = "OBC", Value = "OBC" },
+        new SelectListItem { Text = "SC", Value = "SC" },
+        new SelectListItem { Text = "ST", Value = "ST" },
+
+    };
+     var maritalstat = new List<SelectListItem> {
+        new SelectListItem { Text = "Married", Value = "Married" },
+        new SelectListItem { Text = "Unmarried", Value = "Unmarried" }
+
+    };
+     var gender = new List<SelectListItem> {
+        new SelectListItem { Text = "Female", Value = "Female" },
+        new SelectListItem { Text = "Male", Value = "Male" }
+
+    };
+    var batchtime = new List<SelectListItem> {
+         new SelectListItem { Text = "06:07 AM", Value = "06:07 AM" },
+         new SelectListItem { Text = "07:08 AM", Value = "07:08 AM" },
+         new SelectListItem { Text = "08:09 AM", Value = "08:09 AM" },
+         new SelectListItem { Text = "09:10 AM", Value = "09:10 AM" },
+         new SelectListItem { Text = "10:11 AM", Value = "10:11 AM" },
+         new SelectListItem { Text = "11:12 AM", Value = "11:12 AM" },
+         new SelectListItem { Text = "12:13 PM", Value = "12:13 PM" },
+         new SelectListItem { Text = "01:14 PM", Value = "01:14 PM" },
+         new SelectListItem { Text = "02:15 PM", Value = "02:15 PM" },
+         new SelectListItem { Text = "03:16 PM", Value = "03:16 PM" },
+         new SelectListItem { Text = "04:17 PM", Value = "04:17 PM" },
+         new SelectListItem { Text = "05:00 PM", Value = "05:00 PM" },
+         new SelectListItem { Text = "06:00 PM", Value = "06:00 PM" },
+         new SelectListItem { Text = "07:00 PM", Value = "07:00 PM" },
+    };
+    var course = ViewData["course"] as List<SelectListItem>; 
+}
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="text-themecolor">Student</h4>
+    </div>
+    <div class="col-md-7 align-self-center text-right">
+        <div class="d-flex justify-content-end align-items-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Student</li>
+            </ol>
+            <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i>Add Student</button>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("AddStudent", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row upp2">
+        <!-- Column -->
+
+        <div class="col-lg-3 col-xlg-3 col-md-3">
+            <div class="card">
+                <div class="card-body profilecard">
+                    <center class="m-t-30">
+                        <img src="~/assets/images/users/deafult.png" class="img-circle" id="profImg1" width="150" />
+                        <h4 class="card-title m-t-10">Student Profile Pic </h4>
+                        <!--    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6> -->
+                        <div class="row text-center justify-content-md-center">
+                            <div class="upload-btn-wrapper">
+                                <button class="btn upld">Upload a new file</button>
+                                <input type="file" id="StudentPic" name="StudentPic" />
+                            </div>
+                        </div>
+
+                    </center>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body profilecard">
+                    <center class="m-t-30">
+                        <img src="~/assets/images/icon/sign.png" class="img-circle" id="profImg2" width="150" />
+                        <h4 class="card-title m-t-10">Student Sign Pic </h4>
+                        <!--    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6> -->
+                        <div class="row text-center justify-content-md-center">
+                            <div class="upload-btn-wrapper">
+                                <button class="btn upld">Upload a new file</button>
+                                <input type="file" id="SignofStudent" name="SignofStudent" />
+                            </div>
+                        </div>
+
+                    </center>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body profilecard">
+                    <center class="m-t-30">
+                        <img src="~/assets/images/icon/fingerprint.jpg" class="img-circle" id="profImg3" width="150" />
+                        <h4 class="card-title m-t-10">Student Thumb Pic </h4>
+                        <!--    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6> -->
+                        <div class="row text-center justify-content-md-center">   
+                            <div class="upload-btn-wrapper">
+                                <button class="btn upld">Upload a new file</button>
+                                <input type="file" id="ThumbofStudent" name="ThumbofStudent" />
+                            </div>
+                        </div>
+
+                    </center>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body profilecard">
+                    <center class="m-t-30">
+                        <img src="~/assets/images/icon/sign.png" class="img-circle" id="profImg4" width="150" />
+                        <h4 class="card-title m-t-10">CEO Sign Pic </h4>
+                        <!--    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6> -->
+                        <div class="row text-center justify-content-md-center">
+                            <div class="upload-btn-wrapper">
+                                <button class="btn upld">Upload a new file</button>
+                                <input type="file" id="CEOofSign" name="CEOofSign" />
+                            </div>
+                        </div>
+
+                    </center>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+        <!-- Column -->
+        <div class="col-lg-9 col-xlg-9 col-md-10">
+            <div class="card">
+                <!-- Nav tabs -->
+                <!-- Tab panes -->
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="settings" role="tabpanel">
+
+                        <div class="col-12">
+                            <div class="row">
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Student Admission Forms : </h4>
+                                     
+                                            <div class="form-row">
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="validationDefault01">Registration No. </label>
+                                                    @Html.EditorFor(model => model.ApplicationNo, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Registration No. ", @required = "" } })
+
+
+                                                    @Html.ValidationMessageFor(model => model.ApplicationNo, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Branch Code</label>
+                                                    @Html.EditorFor(model => model.BranchCode, new { htmlAttributes = new { @class = "form-control", @readonly = "", @type = "text", @placeholder = @ViewBag.BranchCode , @value=@ViewBag.BranchCode } })
+                                                   
+
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Date of Joining</label>
+                                                    @Html.EditorFor(model => model.DateofJoining, new { htmlAttributes = new { @class = "form-control", @type = "date", @placeholder = " Date of Joining ", @required = "" } })
+                                                    @Html.ValidationMessageFor(model => model.DateofJoining, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label>Student Name</label>
+                                                    <div class="input-group">
+                                                        @Html.EditorFor(model => model.StudentName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Student Name", @required = "" } })
+                                                        @Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label>Father  Name</label>
+                                                    <div class="input-group">
+                                                        @Html.EditorFor(model => model.FatherName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Father Name ", @required = "" } })
+                                                        @Html.ValidationMessageFor(model => model.FatherName, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label >Mother Name</label>
+                                                    <div class="input-group">
+                                                        @Html.EditorFor(model => model.MotherName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Mother Name "} })
+                                                        @Html.ValidationMessageFor(model => model.MotherName, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Occupation</label>
+
+                                                    @Html.DropDownListFor(model => model.Occupation,
+                    listItems,
+                    "--SELECT Occupation--",
+                    new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Occupation, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Category</label>
+                                                    @Html.DropDownListFor(model => model.Category,
+                     category
+                     ,
+                     "--SELECT CATEGORY--",
+                     new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Caste</label>
+                                                    @Html.EditorFor(model => model.Caste, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Caste ", @required = "" } })
+                                                    @Html.ValidationMessageFor(model => model.Caste, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Contact No. 1</label>
+                                                    @Html.EditorFor(model => model.ConactNo1, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Contact No. ", @required = "" } })
+                                                    @Html.ValidationMessageFor(model => model.ConactNo1, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Contact No 2</label>
+                                                    @Html.EditorFor(model => model.ConactNo2, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Contact No. " } })
+                                                    @Html.ValidationMessageFor(model => model.ConactNo2, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label >Contact No 3</label>
+                                                    @Html.EditorFor(model => model.ConactNo3, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Contact No." } })
+                                                    @Html.ValidationMessageFor(model => model.ConactNo3, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label >Email Address</label>
+                                                    <div class="input-group">
+                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = " Enter Email Address ", @required = "" } })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label >Gender</label>
+                                                    <div class="input-group">
+                                                        @Html.DropDownListFor(model => model.Gender,
+                    gender
+                    ,
+                    "--SELECT Gender--",
+                    new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label>Address</label>
+                                                    <div class="input-group">
+                                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Address. ", @required = "" } })
+                                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Pincode </label>
+                                                    @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Pincode ", @required = "" } })
+                                                    @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label >Religion</label>
+                                                    @Html.EditorFor(model => model.Religion, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Religion ", @required = "" } })
+                                                    @Html.ValidationMessageFor(model => model.Religion, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Passing Years</label>
+                                                    @Html.EditorFor(model => model.PassingYears, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Passing Years", @required = "" } })
+                                                    @Html.ValidationMessageFor(model => model.PassingYears, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label>Date of Birth</label>
+                                                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", @type = "date", @placeholder = "Enter Date of Birth ", @required = "" } })
+                                                    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label>Marital Status</label>
+                                                    @Html.DropDownListFor(model => model.MaritalStatus,
+                   maritalstat
+                   ,
+                   "--SELECT Marital Status--",
+                   new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.MaritalStatus, "", new { @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label >Last Qualification</label>
+                                                    @Html.EditorFor(model => model.Qualification, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Qualification " } })
+                                                    @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label >Marks</label>
+                                                    @Html.EditorFor(model => model.Marks, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Total Marks " } })
+                                                    @Html.ValidationMessageFor(model => model.Marks, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Course Applied For : </label>
+                                                    @Html.DropDownListFor(model => model.Course,
+                     course
+                     ,
+                     "--SELECT Course--",
+                     new { @class = "form-control" })
+
+                                                    @Html.ValidationMessageFor(model => model.Course, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label> Batch Time :</label>
+                                                    @Html.DropDownListFor(model => model.BatchTime,
+                                                                     batchtime
+                                                                     ,
+                                                                     "--SELECT BATCHTIME--",
+                                                                     new { @class = "form-control", @type = "text", @placeholder = " Enter Batch Time ", @required = "" })
+                                                    @Html.ValidationMessageFor(model => model.BatchTime, "", new { @class = "text-danger" })
+
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label >Remarks :</label>
+                                                    @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Remarks " } })
+                                                    @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label>Aahaar Card No.</label>
+                                                    @Html.EditorFor(model => model.AadhaarCardNo, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Aadhaar Card No. " } })
+
+                                                    @Html.ValidationMessageFor(model => model.AadhaarCardNo, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label> Month of Exam</label>
+                                                    @Html.EditorFor(model => model.MonthofExam, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Month of Exam " } })
+                                                    @Html.ValidationMessageFor(model => model.MonthofExam, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label > Total Fees : </label>
+                                                    @Html.EditorFor(model => model.TotalFees, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = " Enter Total Fees ", @required = "" } })
+                                                    @Html.ValidationMessageFor(model => model.TotalFees, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="col-md-2 mb-6">
+                                                    <div class="custom-control  mr-sm-10">
+                                                        @Html.CheckBoxFor(model => model.isIssueBag, new { htmlAttributes = new { @class = "custom-control-input" } })
+
+                                                        <label class="" for="checkbox12">Bags</label><br />
+
+                                                        @Html.CheckBoxFor(model => model.isIssueBooks, new { htmlAttributes = new { @class = "custom-control-input" } })
+                                                        <label class="" for="checkbox13">Books</label><br />
+
+                                                        @Html.CheckBoxFor(model => model.isIssueICard, new { htmlAttributes = new { @class = "custom-control-input" } })
+                                                        <label class="" for="checkbox14">I-Card</label>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 mb-6">
+                                                    <div class="custom-control  mr-sm-10">
+                                                        @Html.RadioButtonFor(model => model.Status, "Active", new { htmlAttributes = new { @class = " ", @type = "radio", id = "checkbox12" } })
+                                                        @*<input type="checkbox" class="custom-control-input" id="checkbox12" value="check">*@
+                                                        <label class="">Active</label><br />
+                                                        @Html.RadioButtonFor(model => model.Status, "Active", new { htmlAttributes = new { @class = "custom-control-input" } })
+                                                        @*<input type="checkbox" class="custom-control-input" id="checkbox13" value="check">*@
+                                                        <label class="">Deactive</label><br />
+                                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-primary" type="submit">Submit</button>
+                                            <button class="btn btn-primary" type="reset">Clear</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- Column -->
+    </div>
+}
+<!------------------>
+@if (ViewBag.result == "yes")
+{
+    <script type="text/javascript">
+        $(function () {
+            "use strict"
+            $.toast({
+                heading: 'Staff Added Successfully '
+                , text: 'Use the predefined ones, or specify a custom position object.'
+                , position: 'top-right'
+                , loaderBg: '#ff6849'
+                , icon: 'info'
+                , hideAfter: 3500
+                , stack: 6
+            });
+        });
+    </script>
+}
+@section scripts {
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+<script type="text/javascript">
+    $(function () { 
+        $('#StudentPic').change(function () {
+            readURL(this);
+        });
+         $('#SignofStudent').change(function () {
+            readURL(this);
+         });
+         $('#ThumbofStudent').change(function () {
+            readURL(this);
+         });
+          $('#CEOofSign').change(function () {
+            readURL(this);
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#profImg1').attr('src', e.target.result);
+                     $('#profImg2').attr('src', e.target.result); $('#profImg4').attr('src', e.target.result);
+                     $('#profImg3').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    });
+</script>
+}
+
